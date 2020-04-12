@@ -16,6 +16,10 @@ body {
 }
 .menu, .heading-meta, footer { text-align: center; }
 .title { font-size: 1.1em; }
+.copyleft {
+  display:inline-block;
+  transform: rotateY(180deg);
+}
 footer a { text-decoration: none; }
 hr {
   border-style: dashed;

@@ -1,7 +1,7 @@
 <footer>
   {{ partial "custom.footer.html" . }}
   <hr/>
-  {{ with .Site.Params.footer }}
+  <span class="copyleft">&copy; {{ with .Site.Params.footer }}</span>
   {{ . | markdownify }}
   {{ end }}
 </footer>
