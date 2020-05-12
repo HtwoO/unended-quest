@@ -3,6 +3,7 @@ title = "Unended Quest"
 
 [permalinks]
     en = "en/:year/:slug/"
+    zh = "zh/:year/:slug/"
 
 [[menu.main]]
     name = "Categories"
@@ -16,6 +17,10 @@ title = "Unended Quest"
     name = "Home"
     url = "/"
     weight = 33
+[[menu.main]]
+    name = "中文"
+    url = "/zh"
+    weight = 36
 [[menu.main]]
     name = "Tags"
     url = "/tags/"
