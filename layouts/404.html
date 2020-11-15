@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{{ "/css/style.css" | relURL }}" />
+    <link rel="stylesheet" href="{{ "/css/fonts.css" | relURL }}" />
+  </head>
+
+  <body>
+    {{ partial "header.html" . }}
+    <h1 align="center">{{ .Site.Title }}</h1>
+    <h2 align="center">404</h2>
+    <p align="center">I am sorry, your quest leads to no end</p>
+    {{ partial "footer.html" . }}
+  </body>
+</html>

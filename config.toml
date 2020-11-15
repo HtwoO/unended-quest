@@ -1,2 +1,29 @@
 baseURL = "/"
 title = "Unended Quest"
+
+[permalinks]
+    en = "en/:year/:slug/"
+
+[[menu.main]]
+    name = "Categories"
+    url = "/categories/"
+    weight = 24
+[[menu.main]]
+    name = "English"
+    url = "/en/"
+    weight = 27
+[[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 33
+[[menu.main]]
+    name = "Tags"
+    url = "/tags/"
+    weight = 39
+[[menu.main]]
+    name = "Subscribe"
+    url = "/index.xml"
+
+[params]
+    description = "Random stuff by HtwoO"
+    footer = "&copy; 2020 [HtwoO](https://github.com/HtwoO)"
