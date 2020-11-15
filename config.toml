@@ -6,6 +6,10 @@ title = "Unended Quest"
     zh = "zh/:year/:slug/"
 
 [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 21
+[[menu.main]]
     name = "Categories"
     url = "/categories/"
     weight = 24
