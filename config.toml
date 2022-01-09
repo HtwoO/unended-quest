@@ -35,4 +35,4 @@ title = "Unended Quest"
 
 [params]
     description = "Random stuff by HtwoO"
-    footer = "2020 [HtwoO](https://github.com/HtwoO)"
+    footer = "2020-{Year} [HtwoO](https://github.com/HtwoO)"

@@ -3,6 +3,6 @@
   <hr/>
   <span class="copyleft">&copy; </span>
   {{ with .Site.Params.footer }}
-  {{ . | markdownify }}
+  {{ replace . "{Year}" now.Year | markdownify }}
   {{ end }}
 </footer>
