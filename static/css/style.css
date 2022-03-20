@@ -15,7 +15,7 @@ body {
   border-radius: 5px;
 }
 .menu, .heading-meta, footer { text-align: center; }
-.title { font-size: 1.1em; }
+.title { font-size: 1em; }
 .copyleft {
   display:inline-block;
   transform: rotateY(180deg);
@@ -34,13 +34,13 @@ pre {
   overflow-x: auto;
   border-radius: 3px;
 }
-code { background: #f9f9f9; }
+code { background: #ececec; }
 pre code { background: none; }
 
 /* misc elements */
 img, iframe, video { max-width: 100%; }
 blockquote {
-  background: #f9f9f9;
+  background: #ececec;
   border-left: 1px solid #ccc;
   padding: 3px 1em 3px;
   border-radius: 3px;
