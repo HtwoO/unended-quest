@@ -1,5 +1,5 @@
 baseURL = "/"
-title = "Unended Quest"
+title = "Unended quest 无尽的探索"
 
 [permalinks]
     en = "en/:year/:slug/"
