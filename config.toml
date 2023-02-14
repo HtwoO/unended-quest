@@ -10,7 +10,7 @@ title = "Unended quest 无尽的探索"
     url = "/about/"
     weight = 21
 [[menu.main]]
-    name = "Categories"
+    name = "Categories 分类"
     url = "/categories/"
     weight = 24
 [[menu.main]]
@@ -18,7 +18,7 @@ title = "Unended quest 无尽的探索"
     url = "/en/"
     weight = 27
 [[menu.main]]
-    name = "Home"
+    name = "Home 首页"
     url = "/"
     weight = 33
 [[menu.main]]
@@ -26,13 +26,13 @@ title = "Unended quest 无尽的探索"
     url = "/zh"
     weight = 36
 [[menu.main]]
-    name = "Tags"
+    name = "Tags 标签"
     url = "/tags/"
     weight = 39
 [[menu.main]]
-    name = "Subscribe"
+    name = "Subscribe 订阅"
     url = "/index.xml"
 
 [params]
-    description = "Random stuff by HtwoO"
+    description = "Random stuff"
     footer = "2020-{Year} [HtwoO](https://github.com/HtwoO)"
