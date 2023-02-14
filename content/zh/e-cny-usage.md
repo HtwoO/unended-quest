@@ -4,7 +4,7 @@ date: 2023-02-12
 slug: e-cny-usage
 author: HtwoO
 categories:
-    - Life
+    - 生活
 tags:
     - 电子支付
 ---
