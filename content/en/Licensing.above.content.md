@@ -67,4 +67,6 @@ If Wikimedia foundation is using Spider-Man licensing model, millions of users w
 
 I choose this title as an analogy to Leslie Lamport's "Thinking above the Code" [talk](https://www.youtube.com/watch?v=-4Yp3j_jk8Q).
 
+Just heard about [Promodbus license](https://libmodbus.org/promodbus-license/) used by [libmodbus](https://libmodbus.org), I think it's a good attempt.
+
 Fun fact: I heard from people in a tech discussion group (where some may just be Tencent software engineeers) that, the protocol QQ used was badly designed, and the legacy code used there, is a pile of shit (or 屎山 in Chinese :lol:-), even if it is opened, developers may not like to work on it ;-)
