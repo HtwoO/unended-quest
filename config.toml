@@ -6,7 +6,7 @@ title = "Unended quest 无尽的探索"
     zh = "zh/:year/:slug/"
 
 [[menu.main]]
-    name = "About 关于我"
+    name = "About 关于"
     url = "/about/"
     weight = 21
 [[menu.main]]
