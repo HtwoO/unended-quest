@@ -3,9 +3,9 @@ title: About me 关于我
 author: HtwoO
 ---
 
-[中文简历](/cn-cv.2023-02.pdf)
+[中文简历](/cn-cv.pdf)
 
-[Curriculum Vitae in English](/cv.2023-02.pdf)
+[Curriculum Vitae in English](/cv.pdf)
 
 Wikimedia: http://en.wikipedia.org/wiki/User:BnW.h
 
