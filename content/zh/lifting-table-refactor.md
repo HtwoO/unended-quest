@@ -1,5 +1,5 @@
 ---
-title: 升降桌体验以及「重构」简化「接口」
+title: 升降桌「重构」以简化「接口」
 date: 2023-04-19
 slug: lifting-table
 author: HtwoO
