@@ -8,3 +8,6 @@ public: site
 
 site:
 	hugo --cleanDestinationDir
+
+test:
+	hugo server
