@@ -1,6 +1,6 @@
 ---
 title: 世界的本源是信息？
-date: 2023-08-30
+date: 2023-08-29
 slug: physics-information-model
 author: HtwoO
 categories:
