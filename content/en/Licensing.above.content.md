@@ -1,6 +1,6 @@
 ---
 title: Licensing above the Code/Content
-date: 2023-02-27
+date: 2023-08-30
 slug: content-licensing
 author: HtwoO
 categories:
