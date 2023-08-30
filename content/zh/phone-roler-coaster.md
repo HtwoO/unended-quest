@@ -1,6 +1,6 @@
 ---
 title: 手机过山车
-date: 2023-06-20
+date: 2023-08-30
 slug: oneplus7t-lineageos
 author: HtwoO
 categories:
@@ -311,7 +311,7 @@ LineageOS 系统比较简洁干净，原始系统只有 AudioFX 、拨打电话�
  - Fastboot 模式，可以用 `fastboot` 工具刷入定制的恢复映像
  - 使用高通基带的手机，有 EDL 紧急下载模式，可以利用串口 communication port (COM) 通信模式刷入映像，不知道其他基带厂的有没有相似模式
 
-在手机引导程序界面状态， USB 线着 macOS 时，系统识别不出手机， `adb devices` 和 `fastboot devices` 都没见设备，之前没有怀疑过 macOS ，后来能识别到是在宿主操作系统重启过之后，所以在折腾硬件时，还是不应过于信任操作系统，还是有必要重启（ reset ）看看是否有帮助。
+在手机引导程序界面状态， USB 线接着 Macbook 时，系统识别不出手机， `adb devices` 和 `fastboot devices` 都没见设备，之前没有怀疑过 macOS ，后来能识别到是在宿主操作系统重启过之后，所以在折腾硬件时，还是不应过于信任操作系统，还是有必要重启（ reset ）看看是否有帮助。
 
 不需要经过一加公司方面的流程，用户就可以自己解锁手机引导程序，我只能感恩。
 
