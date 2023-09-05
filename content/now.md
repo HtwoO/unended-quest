@@ -5,7 +5,7 @@ author: HtwoO
 
 This page is inspired by Derek Sivers's [/now movement](https://sive.rs/nowff)
 
-Updated on 2023-09-05. In the last several months, I helped repairring and renovating my old family house in rural area and now I'm back in a place closer to downtown Nanning. But I would go back ocasionally to rural area on weekends to do some maintainance work on home appliances.
+Updated on 2023-09-05. In the last several months, I helped repairing and renovating my old family house in rural area and now I'm back in a place closer to downtown Nanning. But I would go back ocasionally to rural area on weekends to do some maintainance work on home appliances.
 
 ## Seeking a job 找工作
 
