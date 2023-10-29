@@ -12,12 +12,10 @@ tags:
 
 ## Debian 官方建议逐渐停用 `apt-key`
 为确保软件仓库（软件源）分发内容的完整性， Debian 系统的开发者会使用[数字签名](https://zh.wikipedia.org/wiki/%E6%95%B8%E4%BD%8D%E7%B0%BD%E7%AB%A0)技术给仓库里的一些数据做签名。 Debian 9.x 和更早的版本，一般会用 `apt-key` 处理下载的验证公钥，不过好像是从 Debian 10.x 开始，运行 `apt-key` 时，时不时会看到下面这一行警告信息：
-
 ```
 Warning: apt-key is deprecated. Manage keyring files in trusted.gpg.d instead (see apt-key(8)).
 ```
-
-查了一下， Debian 官方缺陷跟踪系统里关于停用 `apt-key` 的讨论发布于 2017 年，但是很多教程仍然写的还是旧的使用 `apt-key` 的方法。
+上面这句大概意识是「 apt-key 即将要被停用，请使用 trustred.gpg.d 管理密钥」。查了一下， Debian 官方缺陷跟踪系统里关于停用 `apt-key` 的讨论发布于 2017 年，但是很多教程仍然写的还是旧的使用 `apt-key` 的方法。
 
 ## 替代方法
 有些教程以及我自己以前曾经直接把验证用的公钥直接放在 `/etc/apt/trusted.gpg.d/` ，后来意识到那样不太好，后来我就创建了一个 `/etc/apt/keyring/` 目录，用来放第三方软件源的验证公钥。
@@ -31,7 +29,7 @@ $ sudo wget --output-document=/etc/apt/keyring/file.gpg https://x.y.z/file.gpg
 ```
 
 ### 配置软件源
-验证用公钥下载回来后，在软件仓库的 `.list` 文件里配成类似下面这样，就是添加 `[signed-by=/etc/apt/keyring/file.gpg]` 段：
+验证用公钥下载回来后，在软件仓库的 `.list` 文件里配成类似下面这样，就是添加 `[signed-by=/etc/apt/keyring/file.gpg]` 段，这里的文件路径要和上文下载的路径一样：
 ```
 deb [signed-by=/etc/apt/keyring/file.gpg] https://deb...
 deb-src [signed-by=/etc/apt/keyring/file.gpg] https://deb...
@@ -69,7 +67,7 @@ W: Failed to fetch https://deb.nodesource.com/node_20.x/dists/nodistro/InRelease
 
 ## 扩展实验
 如果想知道验证用的公钥里具体存了什么数据，比如公钥什么时候生成、有效期到什么时候，用了什么算法等等，可以使用 GnuPG 的 `--list-packets` 子命令查看：
-```
+``` shell
 $ cat /etc/apt/keyring/nodesource.asc | gpg --list-packets
 # off=0 ctb=99 tag=6 hlen=3 plen=269
 :public key packet:
@@ -86,7 +84,7 @@ $ cat /etc/apt/keyring/nodesource.asc | gpg --list-packets
         subpkt 16 len 8 (issuer key ID 2F59B5F99B1BE0B4)
         data: [2045 bits]
 ```
-如果要理解更具体的各个数据项目的细节，可以去查看由[互联网工程任务组 Internet Engineering Task Force (IETF)](https://zh.wikipedia.org/wiki/%E4%BA%92%E8%81%94%E7%BD%91%E5%B7%A5%E7%A8%8B%E4%BB%BB%E5%8A%A1%E7%BB%84) 在 RFC4880 里[标准化 的 OpenPGP 消息编码规则](https://datatracker.ietf.org/doc/html/rfc4880)，OpenPGP 里的 PGP 指[相当不错的隐私 Pretty Good Privacy (PGP)](https://en.wikipedia.org/wiki/Pretty_Good_Privacy) 。
+如果要理解更具体的各个数据项目的细节，可以去查看由[互联网工程任务组 Internet Engineering Task Force (IETF)](https://zh.wikipedia.org/wiki/%E4%BA%92%E8%81%94%E7%BD%91%E5%B7%A5%E7%A8%8B%E4%BB%BB%E5%8A%A1%E7%BB%84) 在 [RFC](https://zh.wikipedia.org/wiki/RFC) 4880 里标准化的 [OpenPGP 消息编码规范](https://datatracker.ietf.org/doc/html/rfc4880)，OpenPGP 里的 PGP 指[相当不错的隐私 Pretty Good Privacy (PGP)](https://en.wikipedia.org/wiki/Pretty_Good_Privacy) 。
 
 ## 参考资料
 
