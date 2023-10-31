@@ -21,7 +21,7 @@ Warning: apt-key is deprecated. Manage keyring files in trusted.gpg.d instead (s
 有些教程以及我自己以前曾经直接把验证用的公钥直接放在 `/etc/apt/trusted.gpg.d/` ，后来意识到那样不太好，后来我就创建了一个 `/etc/apt/keyring/` 目录，用来放第三方软件源的验证公钥。
 
 ### 下载验证用公钥
-下载第三方软件源的验证公钥，可以使用 `wget` 或者 `curl` ，两个命令行下载工具，在各个 Linux 发行版都很容易安装。要注意的是，如果分发者如果提供的公钥是纯文本编码的格式，保存的文件后缀名应该使用 `.asc` ，如果分发者提供的是二进制文件格式，需要使用 [GnuPG](https://www.gnupg.org/) 二进制文件惯用的 `.gpg` 后缀名，放到指定的目录。
+下载第三方软件源的验证公钥，可以使用 `wget` 或者 `curl` ，两个命令行下载工具，在各个 Linux 发行版都很容易安装。要注意的是，如果分发者提供的公钥是纯文本编码的格式，保存的文件后缀名应该使用 `.asc` ，如果分发者提供的是二进制文件格式，需要使用 [GnuPG](https://www.gnupg.org/) 二进制文件惯用的 `.gpg` 后缀名，放到指定的目录。
 
 ``` shell
 $ sudo mkdir /etc/apt/keyring
@@ -35,10 +35,10 @@ deb [signed-by=/etc/apt/keyring/file.gpg] https://deb...
 deb-src [signed-by=/etc/apt/keyring/file.gpg] https://deb...
 ```
 
-## Node.js 20.x 示例
-根据 https://github.com/nodesource/distributions ，页面上的指导里下载的公钥后经过 `gpg --dearmor` 处理了一下，转换成二进制，可以知道他们分发的公钥应该是文本格式的，可以用下面命令下载公钥的内容到终端输出查看：
+## Google Linux 软件仓库示例
+Google 的 Linux 软件源配置指南在 https://www.google.com/linuxrepositories/ ，可以用下面命令下载公钥的内容到终端输出查看仓库的验证公钥内容：
 ``` shell
-$ curl --location --show-error --silent https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key
+$ curl --location --show-error --silent https://dl.google.com/linux/linux_signing_key.pub
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 .
 -----END PGP PUBLIC KEY BLOCK-----
@@ -48,41 +48,50 @@ $ curl --location --show-error --silent https://deb.nodesource.com/gpgkey/nodeso
 
 ``` shell
 $ sudo mkdir /etc/apt/keyring
-$ sudo curl --location --output /etc/apt/keyring/nodesource.asc --show-error --silent https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key
+$ sudo curl --location --output /etc/apt/keyring/google.asc --show-error --silent https://dl.google.com/linux/linux_signing_key.pub
 ```
 
-然后配置软件源配置文件指向下载的文件路径，以下是我一个 Debian 系统上 `/etc/apt/sources.list.d/nodejs.list` 文件的内容：
+然后配置软件源配置文件指向下载的文件路径，以下是我一个 Debian 系统上 `/etc/apt/sources.list.d/google.list` 文件的内容，某个包的路径是从其他来源看到的，不知道 Google 的软件源里都还有哪些软件支持直接用 Linux 包管理器安装：
 ```
-deb [signed-by=/etc/apt/keyring/nodesource.asc] https://deb.nodesource.com/node_20.x nodistro main
-deb-src [signed-by=/etc/apt/keyring/nodesource.asc] https://deb.nodesource.com/node_20.x nodistro main
+deb [signed-by=/etc/apt/keyring/google.asc] https://dl.google.com/linux/chrome/deb/ stable main
+deb [signed-by=/etc/apt/keyring/google.asc] https://dl.google.com/linux/earth/deb/ stable main
 ```
 可以用下面命令验证如果签名文件没生效的话， `apt update` 时会报什么警告或错误。
 ``` shell
-$ sudo mv /etc/apt/keyring/nodesource.asc{,.unused}
+$ sudo mv /etc/apt/keyring/google.asc{,.unused}
 $ sudo apt update
 .
-W: An error occurred during the signature verification. The repository is not updated and the previous index files will be used. GPG error: https://deb.nodesource.com/node_20.x nodistro InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 2F59B5F99B1BE0B4
-W: Failed to fetch https://deb.nodesource.com/node_20.x/dists/nodistro/InRelease  The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 2F59B5F99B1BE0B4
+Err:1 https://dl.google.com/linux/chrome/deb stable InRelease
+  The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 4EB27DB2A3B88B8B
+Err:2 https://dl.google.com/linux/earth/deb stable InRelease
+  The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 4EB27DB2A3B88B8B
+.
 ```
 
 ## 扩展实验
 如果想知道验证用的公钥里具体存了什么数据，比如公钥什么时候生成、有效期到什么时候，用了什么算法等等，可以使用 GnuPG 的 `--list-packets` 子命令查看：
 ``` shell
-$ cat /etc/apt/keyring/nodesource.asc | gpg --list-packets
-# off=0 ctb=99 tag=6 hlen=3 plen=269
+$ cat /etc/apt/keyring/google.asc | gpg --list-packets
+# off=0 ctb=99 tag=6 hlen=3 plen=418
 :public key packet:
-        version 4, algo 1, created 1464022864, expires 0
-        pkey[0]: [2048 bits]
-        pkey[1]: [17 bits]
-        keyid: 2F59B5F99B1BE0B4
+        version 4, algo 17, created 1173385030, expires 0
+        pkey[0]: [1024 bits]
+        pkey[1]: [160 bits]
+        pkey[2]: [1024 bits]
+        pkey[3]: [1021 bits]
+        keyid: A040830F7FAC5991
 .
-:signature packet: algo 1, keyid 2F59B5F99B1BE0B4
-        version 4, created 1464022864, md5len 0, sigclass 0x18
-        digest algo 2, begin of digest 4f ce
-        hashed subpkt 2 len 4 (sig created 2016-05-23)
-        hashed subpkt 27 len 1 (key flags: 0C)
-        subpkt 16 len 8 (issuer key ID 2F59B5F99B1BE0B4)
-        data: [2045 bits]
+# off=9522 ctb=89 tag=2 hlen=3 plen=1115
+:signature packet: algo 1, keyid 7721F63BD38B4796
+        version 4, created 1676474712, md5len 0, sigclass 0x18
+        digest algo 8, begin of digest cf 19
+        hashed subpkt 27 len 1 (key flags: 02)
+        hashed subpkt 33 len 21 (issuer fpr v4 EB4C1BFD4F042F6DDDCCEC917721F63BD38B4796)
+        hashed subpkt 2 len 4 (sig created 2023-02-15)
+        hashed subpkt 9 len 4 (key expires after 3y0d0h0m)
+        subpkt 32 len 540 (signature: v4, class 0x19, algo 1, digest algo 8)
+        subpkt 16 len 8 (issuer key ID 7721F63BD38B4796)
+        data: [4096 bits]
 ```
 如果要理解更具体的各个数据项目的细节，可以去查看由[互联网工程任务组 Internet Engineering Task Force (IETF)](https://zh.wikipedia.org/wiki/%E4%BA%92%E8%81%94%E7%BD%91%E5%B7%A5%E7%A8%8B%E4%BB%BB%E5%8A%A1%E7%BB%84) 在 [RFC](https://zh.wikipedia.org/wiki/RFC) 4880 里标准化的 [OpenPGP 消息编码规范](https://datatracker.ietf.org/doc/html/rfc4880)，OpenPGP 里的 PGP 指[相当不错的隐私 Pretty Good Privacy (PGP)](https://en.wikipedia.org/wiki/Pretty_Good_Privacy) 。
 
