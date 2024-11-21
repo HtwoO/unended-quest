@@ -13,7 +13,7 @@ tags:
 
 [公开密钥基础设施](https://en.wikipedia.org/wiki/Public_key_infrastructure)（ Public Key Infrastructure, PKI ），是确保现今互联网传输安全的基础技术。我们日常上网使用的工具里，很多是基于自由／开源的软件工具，比如 [OpenSSL](https://www.openssl.org/) 、 [GnuTLS](http://gnutls.org/) 、 [Network Security Services](https://developer.mozilla.org/en-US/docs/NSS) ，以及嵌入式平台上的 [wolfSSL](https://github.com/wolfSSL/wolfssl) 等等[实现](https://en.wikipedia.org/wiki/Comparison_of_TLS_implementations)。因为有这些工具，不需要很大的花费，我们就可以运营一个小型的电子证书认证机构，作为给亲朋好友或一个小型公司内部用户验证的手段。本文以一个很常见的工具 OpenSSL 为例，展示运营一个小型证书认证机构的常见操作。
 
-一开始我之所以会想自己运营一个[电子证书认证机构](https://zh.wikipedia.org/wiki/电子证书认证机构)，是为了在自己配置的[虚拟专用网络（ VPN ）](https://zh.wikipedia.org/wiki/虚拟专用网)服务中用电子证书验证和加密传输的数据。
+一开始我之所以会想自己运营一个[电子证书认证机构](https://zh.wikipedia.org/wiki/%E6%95%B0%E5%AD%97%E8%AF%81%E4%B9%A6%E8%AE%A4%E8%AF%81%E6%9C%BA%E6%9E%84)，是为了在自己配置的[虚拟专用网络（ VPN ）](https://zh.wikipedia.org/wiki/虚拟专用网)服务中用电子证书验证和加密传输的数据。
 
 ## 普通用户需要知道的概念
 
@@ -121,7 +121,7 @@ Subject: C=CN, O=Swan CA, CN=张三
 
 如果持有者希望更新自己的私钥，可以按[生成某一证书持有者的证书](#生成某一证书持有者的证书)段落步骤操作。
 
-## 互联网中的证书机构
+## 互联网上的证书机构
 
 实际的互联网通讯中，对于一个实体的验证要复杂得多。在当前最常见的网络通讯流程中，服务端有电子证书，但用户端没有，用户端程序（比如浏览器）检查的是服务端的证书，但服务端验证用户是利用密码、[HTTP Cookie](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Cookies) 等其他手段。只有当用户使用一些特定设备，比如银行的 U 盾，来使用服务的时候，服务端才利用用户设备上的电子证书来做验证。
 
