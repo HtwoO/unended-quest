@@ -162,14 +162,14 @@ HOME=/
 CLI> echo exit | strace bash -il |& grep --ignore-case '^open' > /tmp/"$(date +%F)".bash.trace.log
 CLI> strace bash -il --verbose -x -c 'env' 2>&1 | tee --append /tmp/"$(date +%F)".bash.trace.log
 ```
-以上两个命令输出的完整 [2026-02-08.bash.trace.log](/2026-02-08.bash.trace.log)
+以上两个命令输出的完整 [2026-02-08.bash.trace.txt](/2026-02-08.bash.trace.txt)
 
 加上 `bash` 的 `--debug` 参数获取更为详细的 bash 启动信息，还是没有找到问题的根源。
 
 ``` shell
 CLI> bash --debug -il -x -c 'env' 2>&1 | tee --append /tmp/"$(date +%F)".bash.env.debug.log
 ```
-以上命令输出的完整日志 [2026-02-08.bash.env.debug.log](/2026-02-08.bash.env.debug.log)
+以上命令输出的完整日志 [2026-02-08.bash.env.debug.txt](/2026-02-08.bash.env.debug.txt)
 
 ## 临时绕过问题的办法
 
