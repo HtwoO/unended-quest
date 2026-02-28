@@ -112,7 +112,7 @@ $ openssl req -new -key user1.key.pem -out user1.csr.pem -subj '/C=CN/O=Swan CA/
 ```
 如果持有者的名字字段中含有[万国码](https://zh.wikipedia.org/wiki/Unicode)字符，需要在命令中加上 `-utf8` 选项。
 
-查看持有者名字字段含有万国码字符的文件时，需要加上 `-nameopt utf8` 选项，才可以在终端正确显示名字中的字符。
+查看持有者名字字段含有万国码字符的文件时，需要加上 `-nameopt utf8` 选项，才可以在终端正确显示名字中的字符。不过，使用 OpenSSL 的 `x509` 子命令查看证书的时候，无需类似选项，只要用户的终端支持，就可以正确显示证书中的万国码字符。
 ``` shell
 $ openssl req -in user1.csr.pem -nameopt utf8 -noout -text
 .
@@ -131,7 +131,7 @@ Subject: C=CN, O=Swan CA, CN=张三
 
 依次点击 Chrome 浏览器地址栏左侧的「查看网站信息 - 连接是安全的 - 证书有效」，可以查看一个网站的完整信任树。
 
-比如 www.google.com 的信任树是这样的： GTS Root R1 -> WR2 -> www.google.com
+比如 www.google.com 的信任树由根至叶是这样的： GTS Root R1 -> WR2 -> www.google.com
 
 当前本站的信任树是这样的： Baltimore CyberTrust Root -> Cloudflare Inc ECC CA-3 -> x080x.net
 
