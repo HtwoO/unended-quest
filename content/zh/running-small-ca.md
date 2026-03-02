@@ -68,7 +68,7 @@ Subject: C = CN, O = Swan CA, CN = Swan Root Cert
 ```
 电子证书中一些重要字段：
  - `Issuer` 部分表示颁发者信息
- - `Validity` 部分表示根证书有效期
+ - `Validity` 部分表示证书有效期
  - `Subject` 部分表示证书持有者
 
 此处颁发和持有者为同一实体，所以这种证书也被称为「自签名」的电子证书。自签名的证书，是说这个机构的根证书归我控制，也就是表明「我是我」，其他实体会使用这个机构的服务，只是表明他们信任这个证书机构。通常更常见的做法是使用交叉签名，由第三方机构给这个颁发者做担保。
@@ -110,7 +110,7 @@ $ openssl x509 -addtrust clientAuth -addtrust serverAuth \
 ``` shell
 $ openssl req -new -key user1.key.pem -out user1.csr.pem -subj '/C=CN/O=Swan CA/CN=张三' -utf8
 ```
-如果持有者的名字字段中含有[万国码](https://zh.wikipedia.org/wiki/Unicode)字符，需要在命令中加上 `-utf8` 选项。
+如果持有者的名字字段中含有[万国码](https://zh.wikipedia.org/wiki/Unicode)字符，比如汉字，需要在命令中加上 `-utf8` 选项。
 
 查看持有者名字字段含有万国码字符的文件时，需要加上 `-nameopt utf8` 选项，才可以在终端正确显示名字中的字符。不过，使用 OpenSSL 的 `x509` 子命令查看证书的时候，无需类似选项，只要用户的终端支持，就可以正确显示证书中的万国码字符。
 ``` shell
