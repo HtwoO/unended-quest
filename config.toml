@@ -18,7 +18,7 @@ title = "Unended quest 无尽的探索"
     url = "/en/"
     weight = 27
 [[menu.main]]
-    name = "Now 当下"
+    name = "Now 近况"
     url = "/now"
     weight = 31
 [[menu.main]]
