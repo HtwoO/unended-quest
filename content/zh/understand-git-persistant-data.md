@@ -48,7 +48,7 @@ Git 存储的数据是一棵典型的[哈希树](https://en.wikipedia.org/wiki/M
 ```
             A---B---C topic
            /
-...---D---E---F---G---H main
+...---D---E---F---G main
 ```
 `图示一`
 
